@@ -1,3 +1,6 @@
+options:
+  logging: CLOUD_LOGGING_ONLY
+
 steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/ai-model', '.']
@@ -16,5 +19,6 @@ steps:
   env:
     - 'CLOUDSDK_COMPUTE_REGION=asia-southeast2'
     - 'CLOUDSDK_CONTAINER_CLUSTER=AI-Cluster'
+
 images:
 - 'gcr.io/$PROJECT_ID/ai-model'
