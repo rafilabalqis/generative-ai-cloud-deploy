@@ -3,25 +3,22 @@ steps:
   args: ['build', '-t', 'gcr.io/$PROJECT_ID/ai-model', '.']
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'gcr.io/$PROJECT_ID/ai-model']
-
-- name: 'gcr.io/cloud-builders/gcloud'
-  entrypoint: 'bash'
-  args:
-    - '-c'
-    - |
-      gcloud container clusters get-credentials AI-Cluster --region asia-southeast2 --project $PROJECT_ID
-
 - name: 'gcr.io/cloud-builders/kubectl'
   args:
     - 'apply'
     - '-f'
     - 'k8s-deployment.yaml'
-
 - name: 'gcr.io/cloud-builders/kubectl'
   args:
     - 'apply'
     - '-f'
     - 'k8s-service.yaml'
+  env:
+    - 'CLOUDSDK_COMPUTE_REGION=asia-southeast2'
+    - 'CLOUDSDK_CONTAINER_CLUSTER=AI-Cluster'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
 
 images:
 - 'gcr.io/$PROJECT_ID/ai-model'
