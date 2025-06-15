@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ai-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ai-app
+  template:
+    metadata:
+      labels:
+        app: ai-app
+    spec:
+      containers:
+      - name: ai-app
+        image: gcr.io/YOUR_PROJECT_ID/ai-model
+        ports:
+        - containerPort: 5000
