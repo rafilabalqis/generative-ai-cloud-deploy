@@ -10,6 +10,10 @@ Saya sudah mengerjakan tugas membuat konfigurasi deployment untuk model Generati
 - `Dockerfile` — file untuk membangun image Docker
 - `app.py` — kode aplikasi AI sederhana
 
+# Budget Alert 
+![image](https://github.com/user-attachments/assets/09d585be-3092-406c-a4de-fdc7b186128a)
+Saya sudah membuat budget alert di GCP dengan alert tambahan di 25% dan 65%, untuk menghindari overbudget
+
 # Kendala yang Dihadapi
 Selama pengerjaan tugas, saya mengalami beberapa kendala, antara lain:
 
